@@ -74,39 +74,11 @@ def predict():
 
     #On recupere le mot correspondant à l'indice precedent
     word = label[maxPredict]
-    pred = prediction[0][maxPredict] * 100.
-    end = time.time()
+    pred = int(prediction[0][maxPredict] * 100.)
+    prediction = str(pred)+ ' %'
 
-    text = ''
-    #On affiche les prédictions
-    if word == 'rose' :
-        text = 'La rose est la fleur du rosier, arbuste du genre Rosa et de la famille des Rosaceae. La rose des jardins se caractérise avant tout par la multiplication de ses pétales imbriqués, qui lui donne sa forme caractéristique.'
-    if word == 'marguerite' : 
-        text = "Plante herbacée vivace de la famille des Asteraceae (astéracées), originaire d’Eurasie et dont l’inflorescence est un grand capitule composé d’une couronne de ligules blanches autour d'un disque jaune."
-    if word == 'tournesol' :
-        text = "Espèce d’hélianthe à très grandes fleurs, dont les graines oléagineuses sont utilisées dans l’alimentation et les fleurs comme ornement, de nom scientifique Helianthus annuus. Le tournesol est surtout cultivé pour ses graines oléagineuses ; une variété, le soleil uniflore ou soleil de Russie, est particulièrement intéressante, surtout la variété à graines blanches."
-    if word == 'pissenlit' :
-        text = "Plante à fleurs composées, qui croît dans les lieux herbeux et incultes et dont les feuilles, à peu près semblables à celles de la chicorée, se mangent en salade, quand elles sont jeunes et tendres."
-    if word == 'dahlia' : 
-        text = "Astéracée qui porte des fleurs simples ou doubles, dont les tiges naissent en touffe et dont les racines sont des tubercules."
-    if word == 'tulipe' :
-        text = "Plante de la famille des liliacées, à racine bulbeuse, à tige haute, qui porte une belle fleur et dont il existe un très grand nombre de variétés."
-        
-    
-    fleur = 'à  ' + str(pred)+"%" + "un(e)  " + str(word)
-    #print()
-    #print('----------')
-    #print(" Prediction :")
-    #for i in range(0, len(label)):
-    #   print('     ' + label[i] + ' : ' + "{0:.2f}%".format(prediction[0][i] * 100.))
-
-    #print()
-    #print('RESULTAT : ' + word + ' : ' + "{0:.2f}%".format(pred))
-    #print('temps prediction : ' + "{0:.2f}secs".format(end-start))
-
-    #print('----------')
   
-    return f"prediction : {fleur} \n description :{text}"
+    return [word ,prediction]
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port='8888',debug=True)
+      app.run(host='0.0.0.0', port='3400',debug=True)
